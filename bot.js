@@ -33,15 +33,6 @@ client.player = new DisTube(client, {
 process.env.YTDL_NO_UPDATE = true;
 const player = client.player;
 
-client.player.on("finish", (queue) => {
-  // Check if there are songs remaining in the queue
-  if (!queue || !queue.songs || queue.songs.length === 0) {
-    return;
-  }
-
-  // Play the next song in the queue
-  queue.playNext();
-});
 
 fs.readdir("./events", (_err, files) => {
   files.forEach((file) => {
