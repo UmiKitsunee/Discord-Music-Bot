@@ -41,7 +41,7 @@ module.exports = {
           { name: '🎵 Now Playing', value: 'Display the currently playing song information' },
           { name: '🔊 Volume', value: 'Adjust the music volume [ hearing at high volumes is risky ]' }
         );
-        .setImage('https://tenor.com/en-GB/view/cat-music-adorable-gif-15757197');
+      
       await interaction.reply({
         embeds: [musicCommandsEmbed, basicCommandsEmbed],
       }).catch(e => { console.error(e); });
