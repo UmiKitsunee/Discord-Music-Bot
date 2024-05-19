@@ -21,6 +21,8 @@ client.player = new DisTube(client, {
   leaveOnFinish: config.opt.voiceConfig.leaveOnFinish,
   leaveOnEmpty: config.opt.voiceConfig.leaveOnEmpty.status,
   leaveOnStop: true,
+  leaveOnFinish: true,
+  leaveOnEmpty: true,
   emptyCooldown: 60,
   emitNewSongOnly: true,
   emitAddSongWhenCreatingQueue: false,
