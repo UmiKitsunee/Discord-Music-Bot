@@ -23,6 +23,7 @@ client.player = new DisTube(client, {
   emitNewSongOnly: true,
   emitAddSongWhenCreatingQueue: false,
   emitAddListWhenCreatingQueue: false,
+  autoPlay: true,
   plugins: [
     new SpotifyPlugin(),
     new SoundCloudPlugin(),
@@ -71,8 +72,6 @@ fs.readdir(config.commandsDir, (err, files) => {
   });
 });
 
-
-
 if (config.TOKEN || process.env.TOKEN) {
   client.login(config.TOKEN || process.env.TOKEN).catch((e) => {
     console.log('TOKEN ERROR❌❌');
@@ -83,20 +82,18 @@ if (config.TOKEN || process.env.TOKEN) {
   }, 2000);
 }
 
-
 if(config.mongodbURL || process.env.MONGO){
   const mongoose = require("mongoose")
   mongoose.connect(config.mongodbURL || process.env.MONGO, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   }).then(async () => {
     console.log('\x1b[32m%s\x1b[0m', `|    🍔 Connected MongoDB!`)
   }).catch((err) => {
     console.log('\x1b[32m%s\x1b[0m', `|    🍔 Failed to connect MongoDB!`)})
-  } else {
+} else {
   console.log('\x1b[32m%s\x1b[0m', `|    🍔 Error MongoDB!`)
-  }
-
+}
 
 const express = require("express");
 const app = express();
@@ -106,15 +103,6 @@ app.get('/', (req, res) => {
   res.sendFile(imagePath);
 });
 app.listen(port, () => {
-  console.log(`🔗 Listening to Msuic: http://localhost:${port}`);
-
-const { MessageEmbed } = require('discord.js');
-const embed = new MessageEmbed()
-  .setTitle('Now Playing')
-  .setDescription('Song Title')
-  .setThumbnail('URL to song thumbnail')
-  .addField('Duration', '3:45', true)
-  .setFooter('Requested by user');
-message.channel.send({ embeds: [embed] });
-
+  console.log(`🔗 Listening to Music: http://localhost:${port}`);
 });
+
