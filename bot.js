@@ -107,5 +107,14 @@ app.get('/', (req, res) => {
 });
 app.listen(port, () => {
   console.log(`🔗 Listening to Msuic: http://localhost:${port}`);
+
+const { MessageEmbed } = require('discord.js');
+const embed = new MessageEmbed()
+  .setTitle('Now Playing')
+  .setDescription('Song Title')
+  .setThumbnail('URL to song thumbnail')
+  .addField('Duration', '3:45', true)
+  .setFooter('Requested by user');
+message.channel.send({ embeds: [embed] });
+
 });
-printWatermark();
