@@ -43,7 +43,7 @@ module.exports = {
            { name: '🎵 Now Playing', value: 'Display the currently playing song information' },
           { name: '🔊 Volume', value: 'Adjust the music volume [ hearing at high volumes is risky ]' },
         ) 
-      .setImage('https://media.tenor.com/Gl9m9cqC18UAAAAC/cat-music-adorable.gif');
+      .setImage('https://media.tenor.com/Gl9m9cqC18UAAAAC/cat-music-adorable.gif')
 
       interaction.reply({
         embeds: [musicCommandsEmbed, basicCommandsEmbed],
