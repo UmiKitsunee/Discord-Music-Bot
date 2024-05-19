@@ -1,9 +1,7 @@
-
 const { ApplicationCommandOptionType } = require('discord.js');
 const db = require("../mongoDB");
 
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js');
-const { ButtonStyle } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
   name: "help",
@@ -28,9 +26,9 @@ module.exports = {
           { name: '⏩ Seek', value: 'Seek to a specific time in the current song' },
           { name: '⏮️ Previous', value: 'Play the previous song in the queue' },
           { name: '🔀 Shuffle', value: 'Shuffle the songs in queue' },
-          { name: '📃 playlist', value: 'manage the playlists' }
+          { name: '📃 Playlist', value: 'Manage the playlists' }
         )
-        .setImage(`https://cdn.discordapp.com/attachments/1004341381784944703/1165201249331855380/RainbowLine.gif?ex=654f37ba&is=653cc2ba&hm=648a2e070fab36155f4171962e9c3bcef94857aca3987a181634837231500177&`); 
+        .setImage('https://cdn.discordapp.com/attachments/1004341381784944703/1165201249331855380/RainbowLine.gif?ex=654f37ba&is=653cc2ba&hm=648a2e070fab36155f4171962e9c3bcef94857aca3987a181634837231500177&');
 
       const basicCommandsEmbed = new EmbedBuilder()
         .setColor(client.config.embedColor)
@@ -40,14 +38,13 @@ module.exports = {
           { name: '🗑️ Clear', value: 'Clear the song queue of this server' },
           { name: '⏱️ Time', value: 'Display the current song playback time' },
           { name: '🎧 Filter', value: 'Apply filters to enhance the sound as you love' },
-           { name: '🎵 Now Playing', value: 'Display the currently playing song information' },
-          { name: '🔊 Volume', value: 'Adjust the music volume [ hearing at high volumes is risky ]' },
-        ) 
-
-      interaction.reply({
+          { name: '🎵 Now Playing', value: 'Display the currently playing song information' },
+          { name: '🔊 Volume', value: 'Adjust the music volume [ hearing at high volumes is risky ]' }
+        );
+        .setImage('https://tenor.com/en-GB/view/cat-music-adorable-gif-15757197');
+      await interaction.reply({
         embeds: [musicCommandsEmbed, basicCommandsEmbed],
-        components: [row]
-      }).catch(e => {});
+      }).catch(e => { console.error(e); });
     } catch (e) {
       console.error(e);
     }
